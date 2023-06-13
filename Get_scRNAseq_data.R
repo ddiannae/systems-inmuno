@@ -3,7 +3,7 @@ library(SeuratDisk)
 library(SummarizedExperiment)
 library(TCGAbiolinks)
 
-dir.create("scRNAseq_data")
+dir.create("~/scRNAseq_data")
 
 #Get barcodes
 
