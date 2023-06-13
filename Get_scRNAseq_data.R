@@ -21,7 +21,7 @@ saveRDS(barcodes, "barcodes.RDS")
 barcodes <- readRDS("barcodes.RDS")
 
 
-#Get HDF5s
+#Get HDF5s, then save as RDS
 
 for(i in 1:length(barcodes)) {
   
