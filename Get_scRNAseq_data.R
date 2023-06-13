@@ -4,6 +4,7 @@ library(SummarizedExperiment)
 library(TCGAbiolinks)
 
 dir.create("~/scRNAseq_data")
+setwd("scRNAseq_data/")
 
 #Get barcodes
 
