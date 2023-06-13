@@ -3,6 +3,8 @@ library(SeuratDisk)
 library(SummarizedExperiment)
 library(TCGAbiolinks)
 
+dir.create("scRNAseq_data")
+
 #Get barcodes
 
 qry <- GDCquery(project = "CPTAC-3",
