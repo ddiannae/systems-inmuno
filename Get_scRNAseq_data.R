@@ -10,7 +10,6 @@ qry <- GDCquery(project = "CPTAC-3",
                 data.type = "Single Cell Analysis",
                 workflow.type = "Seurat - 10x Chromium",
                 access = "open",
-                #barcode = c("CPT0167860015"),
                 data.format = "HDF5")
 
 clinical <- read.delim("clinical.tsv")
@@ -31,7 +30,7 @@ for(i in 1:length(barcodes)) {
                   data.type = "Single Cell Analysis",
                   workflow.type = "Seurat - 10x Chromium",
                   access = "open",
-                  barcode = c(barcodes[i]),
+                  barcode = barcodes[i],
                   data.format = "HDF5")
   
   GDCdownload(qry)
