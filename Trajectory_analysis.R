@@ -102,7 +102,7 @@ NoTcelss <- c("CPT0087680014", "CPT0125220004", "CPT0167860015",
   
 #### Get TRajectories #### 
   
-for(i in 8:length(n)){
+for(i in 1:length(n)){
   
   
   dir.create(paste0("../../../datos/ot/anakamura/scRNA_npj/",n[i], "_results", "/TrajectoryAnalysis"))
