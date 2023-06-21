@@ -313,7 +313,7 @@ for(i in 1:length(n)){
   
   #### Subset T cells ####
   if(n[i] %in% NoTcelss) {
-    print(paste0("Sample ", n[i], "has no T cells"))
+    print(paste0("Sample ", n[i], " has no T cells"))
   } else {
     
     print(paste0("Analyzing ", n[i], " T cells"))
