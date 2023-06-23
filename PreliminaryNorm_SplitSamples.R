@@ -66,7 +66,7 @@ for(i in 1:length(n)) {
               row.names = TRUE)
   
   #Annotate clusters
-  seurat.sc1.cts <- GetAssayData(seurat.sc1)
+  seurat.sc1.cts <- GetAssayData(seurat.sc1, slot = "counts", assay = "SCT")
   original.rownames <- rownames(seurat.sc1.cts)
   rownames(seurat.sc1.cts) <- annot_TCGA$gene_name[match(rownames(seurat.sc1.cts), annot_TCGA$gene_id)]
   
@@ -133,14 +133,14 @@ for(i in 1:length(n)) {
     # matrix1$Gene <- annot_TCGA$Ensembl_noVers[match(rownames(matrix1), annot_TCGA$gene_name)]
     
     write.table(matrix,
-                file = paste0(dir_res, "/expression_matrices/Cls_",unique(seurat.sc1@meta.data$SCT_snn_res.0.5)[j],"_cts_",n[i],".tsv"),
+                file = paste0(dir_res, "/expression_matrices/Cls_",as.numeric(levels(seurat.sc1@meta.data$SCT_snn_res.0.5)[j]),"_cts_",n[i],".tsv"),
                 quote = FALSE,
                 sep = "\t",
                 col.names = TRUE,
                 row.names = FALSE)
     
     write.table(matrix1,
-                file = paste0(dir_res, "/expression_matrices/Cls_",unique(seurat.sc1@meta.data$SCT_snn_res.0.5)[j],"_FilteredCts_",n[i],".tsv"),
+                file = paste0(dir_res, "/expression_matrices/Cls_",as.numeric(levels(seurat.sc1@meta.data$SCT_snn_res.0.5)[j]),"_FilteredCts_",n[i],".tsv"),
                 quote = FALSE,
                 sep = "\t",
                 col.names = TRUE,
