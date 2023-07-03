@@ -93,8 +93,6 @@ for(i in 1:length(n)){
 NoTcelss <- c("C3N_00662_03", "C3N_01334_03", "C3L_03405_01",
               "C3N_03184_02", "C3N_01814_01", "C3L_03968_01", "C3L_02705_71")
 
-#noMOcells <- c("CPT0205570014", "CPT0224600013", "CPT0228220004")
-
 names(outs_AS) <- n
 names(outs_MO) <- n
 names(outs_T) <- n[!(n %in% NoTcelss)]
