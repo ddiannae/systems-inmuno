@@ -8,14 +8,10 @@ library(dplyr)
 #Load annotation
 annot_TCGA <- readRDS("row_data.RDS")
 
-#Load Seurat object
-#files <- list.files(pattern = "seurat.*RDS")
-
-#Get markers and cluster
-#Get sample name
-# n <- gsub("^seurat_", "", files)
-# n <- gsub("\\.RDS$", "", n)
-n
+#Load Sample Sheet
+sample.sheet <- read.delim("gdc_sample_sheet.2023-06-27.tsv")
+sample.sheet$Sample.ID <- gsub("-", "_", sample.sheet$Sample.ID)
+n <- sample.sheet$Sample.ID
 
 ##### Get outs ####
 for(i in 1:length(n)){
