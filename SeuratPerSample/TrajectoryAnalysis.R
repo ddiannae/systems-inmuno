@@ -230,7 +230,7 @@ for(i in 1:length(n)){
   cells.cds <- cluster_cells(cds = cells.cds, reduction_method = "UMAP")
   cells.cds <- learn_graph(cells.cds, use_partition = TRUE)
   
-  #Get root using the expression of stemness, priorizing SOX2 expression
+  #Get root using the expression of stemness, priorizing CTSB expression
   get_earliest_principal_node <- function(cds){
     
       table <- which(names(outs_MO) == n[i])
@@ -310,7 +310,7 @@ for(i in 1:length(n)){
     cells.cds <- cluster_cells(cds = cells.cds, reduction_method = "UMAP")
     cells.cds <- learn_graph(cells.cds, use_partition = TRUE)
     
-    #Get root using the expression of stemness, priorizing SOX2 expression
+    #Get root using the expression of stemness, priorizing FOXO1 expression
     get_earliest_principal_node <- function(cds){
       
       table <- which(names(outs_T) == n[i])
