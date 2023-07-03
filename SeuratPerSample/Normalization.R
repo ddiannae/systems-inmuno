@@ -29,7 +29,7 @@ fnames <- lapply(sample.sheet$File.ID, gdcdata)
 
 #Select 1
 
-#### Get Seurat object form sample i and normalization ####
+#### Get Seurat object from sample i and normalization ####
 for(i in 1:nrow(sample.sheet)){
   
   fileID_i <- sample.sheet[sample.sheet$File.ID == list.files(data_dir)[i],]$File.ID
@@ -37,8 +37,6 @@ for(i in 1:nrow(sample.sheet)){
   fileName_i <- sample.sheet[sample.sheet$File.ID == list.files(data_dir)[i],]$File.Name
 
   sample_i <- sample.sheet[sample.sheet$File.ID == list.files(data_dir)[i],]$Sample.ID
-  
-  sample.sheet$Sample.ID[match(sample.sheet$File.ID, list.files(data_dir))]
   
   file_dir <- paste0(data_dir, fileID_i, "/", fileName_i)
   
