@@ -1,14 +1,17 @@
 library(readr)
 library(dplyr)
+library(janitor)
 
 args <- commandArgs(trailingOnly=TRUE)
 
-if (length(args) != 2) {
+if (length(args) != 3) {
   stop("Two arguments must be provided", call.=FALSE)
 }
 
 DIR <- args[1]
 TYPE <- args[2]
+ANNOT <- args[3]
+
 cat("Reading files in", paste0(DIR, "/", TYPE), "\n")
 
 files_to_read <- list.files(path = paste0(DIR, "/", TYPE), 
@@ -34,13 +37,27 @@ all_data <- lapply(files_to_read, function(file) {
   return(data)
 })                            
 
-cat("Writing data\n")
 all_data <- Reduce(inner_join, all_data) 
+
+all_data <- all_data %>%
+  filter(gene_type %in% c("protein_coding")) %>%
+  distinct(gene_id, .keep_all = T) %>%
+  distinct(gene_name, .keep_all = T) 
+
+annot <- read_tsv(ANNOT) %>%
+  clean_names() %>%
+  filter(chromosome_scaffold_name %in% c(as.character(1:22), "X", "Y")) %>%
+  filter(!is.na(hgnc_symbol)) %>%
+  select(gene_id = gene_stable_id_version, gene_name = hgnc_symbol, everything())
+
+all_data <- all_data %>%
+  semi_join(annot, by = c("gene_id", "gene_name"))
+
+head(cat("Writing data\n"))
+
 all_data %>%
   write_tsv(paste0(DIR, "/", TYPE, "_counts.tsv"))
 
 targets %>% 
   write_tsv(paste0(DIR, "/", TYPE, "_data.tsv"))
   
-
-
